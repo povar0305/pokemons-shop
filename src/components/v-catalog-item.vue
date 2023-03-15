@@ -4,7 +4,7 @@
         <div class="v-catalog-item_info">
             <p>{{ pokemons_data.name }}</p>
             <p>{{ pokemons_data.id }}</p>
-            <button>Подробнее</button>
+            <button @click="sendDataToParent">Подробнее</button>
         </div>
     </div>
 </template>
@@ -25,7 +25,11 @@ export default {
         }
     },
     computed: {},
-    methods: {},
+    methods: {
+        sendDataToParent() {
+            this.$emit('sendId', this.pokemons_data);
+        }
+    },
     watch: {},
     mounted() {
         console.log('v-catalog-item')

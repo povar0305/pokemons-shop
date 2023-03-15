@@ -1,10 +1,7 @@
 <template >
     <div class="v-catalog">
         v-catalog
-        <vCatalogItem
-        v-for="pokemon in pokemons"
-        :key="pokemon.id"
-        :pokemons_data="pokemon"/>
+        <vCatalogItem v-for="pokemon in pokemons" :key="pokemon.id" :pokemons_data="pokemon" @sendId="showChild"/>
     </div>
 </template>
 <script>
@@ -23,26 +20,30 @@ export default {
             pokemons: [
                 {
                     name: 'ditto',
-                    id:1,
+                    id: 1,
                     scr: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-ii/crystal/transparent/132.png ',
                 }, {
                     name: 'ditto2',
-                    id:2,
+                    id: 2,
                     scr: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-ii/crystal/transparent/132.png ',
                 }, {
                     name: 'ditto333',
-                    id:3,
+                    id: 3,
                     scr: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-ii/crystal/transparent/132.png ',
                 }, {
                     name: 'ditto44',
-                    id:4,
+                    id: 4,
                     scr: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-ii/crystal/transparent/132.png ',
                 },
             ]
         }
     },
     computed: {},
-    methods: {},
+    methods: {
+        showChild(data) {
+            console.log(data)
+        }
+    },
     watch: {},
     mounted() {
         console.log('v-catalog')
