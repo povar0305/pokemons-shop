@@ -1,32 +1,41 @@
 <template>
     <div class="v-catalog-item">
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-ii/crystal/transparent/132.png" alt="">
+        <img alt="" :src=pokemons_data.scr>
         <div class="v-catalog-item_info">
-            <p>Имя</p>
+            <p>{{ pokemons_data.name }}</p>
+            <p>{{ pokemons_data.id }}</p>
             <button>Подробнее</button>
         </div>
     </div>
 </template>
 <script>
 export default {
-    name:'v-catalog-item',
-    data(){
-        return{
-            title:'v-catalog-item'
+    name: 'v-catalog-item',
+    props: {
+        pokemons_data: {
+            type: Object,
+            default() {
+                return {};
+            }
         }
     },
-    computed:{},
-    methods:{},
-    watch:{},
-    mounted(){
+    data() {
+        return {
+            title: 'v-catalog-item'
+        }
+    },
+    computed: {},
+    methods: {},
+    watch: {},
+    mounted() {
         console.log('v-catalog-item')
     }
 }
 </script>
 <style lang="scss">
-    .v-catalog-item{
-        padding: 15px;
-        display: flex;
-        flex-direction: column;
-    }
+.v-catalog-item {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
 </style>
