@@ -8,7 +8,6 @@
     <vMainWrapper></vMainWrapper>
   </div>
 </template>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"/>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&family=Russo+One&display=swap');
 </style>
@@ -23,13 +22,9 @@ export default {
 }
 </script>
 
-<style lang="scss">
-$blue: #3362ae;
-$yellow: #fdd52485;
-
+<style lang="scss"> 
 body {
   margin: 0;
-  padding: 15px;
 }
 
 .ts {
@@ -83,9 +78,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: $blue;
   padding: 15px;
-  border: 2px solid $blue;
   display: flex;
   flex-direction: column;
   border-radius: 8px;
