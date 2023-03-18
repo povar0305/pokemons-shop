@@ -13,9 +13,9 @@ export default {
     name: 'v-catalog-item',
     props: {
         pokemons_data: {
-            type: Object,
+            type: Array,
             default() {
-                return {};
+                return [];
             }
         }
     },

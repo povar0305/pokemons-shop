@@ -1,6 +1,6 @@
 <template >
     <div class="v-card">
-        v-card
+        в корзине {}
     </div>
 </template>
 <script>

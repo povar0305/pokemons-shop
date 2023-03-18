@@ -13,6 +13,8 @@
 </style>
 <script>
 import vMainWrapper from "./components/v-main-wrapper.vue";
+
+
 export default {
   name: 'App',
   components: {
@@ -93,6 +95,7 @@ body {
     & h1{
       font-family: 'Russo One', sans-serif;
       text-transform: uppercase;
+      margin-bottom: 0;
     }
   }
 }
