@@ -1,16 +1,19 @@
 <template>
     <div class="v-catalog-item">
-        <div class="v-catalog-item-carousel"  v-for="src in pokemons_data.src" :key="pokemons_data.src[src]">
-            <img alt="" :src="src">
-        </div>
-        
+        <p>{{ pokemons_data.name }}</p>
+
+        <carousel class="v-catalog-item-carousel">
+            <slide v-for="src in pokemons_data.src" :key="pokemons_data.src[src]">
+                <img alt="" :src="src">
+            </slide>
+        </carousel>
+
         <div class="v-catalog-item_info">
-            <p>{{ pokemons_data.name }}</p>
 
             <div class="row m-0 p-0">
                 <div class="v-catalog-item_info--states">
                     <Icon icon="icon-park-twotone:speed-one" />
-                   {{ pokemons_data.info[5].base_stat }}
+                    {{ pokemons_data.info[5].base_stat }}
                 </div>
                 <div class="v-catalog-item_info--states">
                     <Icon icon="mdi:heart-outline" />
@@ -40,10 +43,14 @@
 </template>
 <script>
 import { Icon } from '@iconify/vue2';
-
+import { Carousel, Slide } from 'vue-carousel'
 export default {
     name: 'v-catalog-item',
-    components: { Icon },
+    components: {
+        Icon,
+        Carousel,
+        Slide
+    },
     props: {
         pokemons_data: {
             type: Object,
@@ -80,11 +87,11 @@ export default {
     padding: 1rem;
 
     @media (max-width: 1440px) {
-        width: calc(33% - 4rem) ;
+        width: calc(33% - 4rem);
     }
 
     @media (max-width: 768px) {
-        width: calc(50% - 2rem) ;
+        width: calc(50% - 2rem);
         margin: 0.5rem;
         padding: 0.5rem;
     }
@@ -115,5 +122,11 @@ export default {
             }
         }
     }
+}
+.VueCarousel-pagination{
+    height: 30px;
+}
+.VueCarousel-dot-container{
+    margin-top: 0 !important;
 }
 </style>
