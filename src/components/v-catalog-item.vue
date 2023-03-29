@@ -1,21 +1,51 @@
 <template>
     <div class="v-catalog-item">
-        <img alt="" :src=pokemons_data.scr>
+        <img alt="" :src=pokemons_data.src>
         <div class="v-catalog-item_info">
             <p>{{ pokemons_data.name }}</p>
-            <p>{{ pokemons_data.id }}</p>
-            <button @click="sendDataToParent">Подробнее</button>
+
+            <div class="row m-0 p-0">
+                <div class="v-catalog-item_info--states">
+                    <Icon color="red" icon="icon-park-twotone:speed-one" />
+                    {{ pokemons_data.info[0].base_stat }}
+                </div>
+                <div class="v-catalog-item_info--states">
+                    <Icon color="red" icon="mdi:heart-outline" />
+                    {{ pokemons_data.info[0].base_stat }}
+                </div>
+                <div class="v-catalog-item_info--states">
+                    <Icon color="red" icon="akar-icons:sword" />
+                    {{ pokemons_data.info[1].base_stat }}
+                </div>
+                <div class="v-catalog-item_info--states">
+                    <Icon color="red" icon="akar-icons:double-sword" />
+                    {{ pokemons_data.info[3].base_stat }}
+                </div>
+                <div class="v-catalog-item_info--states">
+                    <Icon color="red" icon="tabler:shield" />
+                    {{ pokemons_data.info[2].base_stat }}
+                </div>
+                <div class="v-catalog-item_info--states">
+                    <Icon color="red" icon="tabler:shield-plus" />
+                    {{ pokemons_data.info[4].base_stat }}
+                </div>
+            </div>
+
+            <button @click="sendDataToParent">Беру</button>
         </div>
     </div>
 </template>
 <script>
+import { Icon } from '@iconify/vue2';
+
 export default {
     name: 'v-catalog-item',
+    components: { Icon },
     props: {
         pokemons_data: {
-            type: Array,
+            type: Object,
             default() {
-                return [];
+                return {};
             }
         }
     },
@@ -38,8 +68,28 @@ export default {
 </script>
 <style lang="scss">
 .v-catalog-item {
-    padding: 15px;
     display: flex;
     flex-direction: column;
-}
-</style>
+    width: 15%;
+
+    & svg {
+        height: 24px;
+        width: 24px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
+
+    &_info {
+        & .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        &--states {
+            width: 33%;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+        }
+    }
+}</style>

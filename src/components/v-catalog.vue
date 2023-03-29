@@ -1,7 +1,7 @@
 <template >
     <div class="v-catalog">
-        v-catalog
-        <vCatalogItem v-for="pokemon in this.$store.state.pokemons" :key="pokemon.id" :pokemons_data="pokemon" @sendId="showChild" />
+        <vCatalogItem v-for="pokemon in this.$store.state.pokemons" :key="pokemon.id" :pokemons_data="pokemon"
+            @sendId="showChild" />
     </div>
 </template>
 <script>
@@ -29,13 +29,10 @@ export default {
             axios
                 .get(this.$store.state.backendUrl + '/pokemon/')
                 .then(resposne => {
-                    console.log(resposne.data)
-                    this.$store.commit('setPokemonsInfo', resposne.data);
-                    console.log(this.$store.getters.getPokemons)
-                })
-                
-                // .then(resposne => (
-                //     this.$store.commit('SET_NAME', your_name)));
+                    this.$store.commit('setPokemons', resposne.data);
+                });
+            // .then(resposne => (
+            //     this.$store.commit('SET_NAME', your_name)));
         }
     },
     watch: {},
@@ -48,4 +45,12 @@ export default {
 
 }
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+.v-catalog {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+</style>

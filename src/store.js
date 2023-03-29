@@ -1,17 +1,35 @@
 
 import Vue from 'vue';
 import vuex from 'vuex';
+import axios from 'axios';
 Vue.use(vuex);
 
 const store = new vuex.Store({
     state: {
         backendUrl: 'https://pokeapi.co/api/v2',
-        pokemons: null
+        pokemons: null,
+        DEGUB: true,
     },
     mutations: {
-        setPokemonsInfo(state, info) {
+        setPokemons(state, info) {
+            if (state.DEGUB) console.log('setPokemons', state, info)
             state.pokemons = info.results;
+            for (var pokemon of state.pokemons) {
+                pokemon.id = pokemon.url.split('/')[6];
+                pokemon.src = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-i/red-blue/transparent/' + pokemon.id + '.png'
+                this.commit('setPokemonsState', pokemon);
+            }
+        },
+        setPokemonsState(state, pokemonObject) {
+            if (state.DEGUB) console.log('setPokemonsState', state, pokemonObject)
+            axios
+                .get(state.backendUrl + '/pokemon/' + pokemonObject.name)
+                .then(resposne => {
+                    pokemonObject.info = resposne.data.stats;
+                    console.log(pokemonObject)
+                });
         }
+
     },
     actions: {},
     modules: {},
