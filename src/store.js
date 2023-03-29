@@ -12,22 +12,29 @@ const store = new vuex.Store({
     },
     mutations: {
         setPokemons(state, info) {
-            if (state.DEGUB) console.log('setPokemons', state, info)
+            if (state.DEGUB) console.log('setPokemons', info)
             state.pokemons = info.results;
             for (var pokemon of state.pokemons) {
                 pokemon.id = pokemon.url.split('/')[6];
-                pokemon.src = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-i/red-blue/transparent/' + pokemon.id + '.png'
-                this.commit('setPokemonsState', pokemon);
+                pokemon.src = ['https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-i/red-blue/transparent/' + pokemon.id + '.png'];
+                this.commit('setPokemonInfo', pokemon);
             }
         },
-        setPokemonsState(state, pokemonObject) {
-            if (state.DEGUB) console.log('setPokemonsState', state, pokemonObject)
+        setPokemonInfo(state, pokemonObject) {
+            if (state.DEGUB) console.log('setPokemonInfo', pokemonObject)
             axios
                 .get(state.backendUrl + '/pokemon/' + pokemonObject.name)
                 .then(resposne => {
                     pokemonObject.info = resposne.data.stats;
-                    console.log(pokemonObject)
+                    pokemonObject.src=resposne.data.sprites;
+
+                    console.log(pokemonObject.src)
                 });
+        },
+        setPokemonSrc(state,pokemonObject){
+            if (state.DEGUB) console.log('setPokemonSrc', pokemonObject)
+
+
         }
 
     },

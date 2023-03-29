@@ -9,7 +9,7 @@
   </div>
 </template>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&family=Russo+One&display=swap');
 </style>
 <script>
 import vMainWrapper from "./components/v-main-wrapper.vue";
@@ -24,7 +24,14 @@ export default {
 }
 </script>
 
-<style lang="scss"> 
+<style lang="scss">
+* {
+  font-family: Montserrat, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: 0.3s;
+}
+
 body {
   margin: 0;
 }
@@ -76,27 +83,43 @@ body {
 }
 
 #app {
-  font-family:Montserrat, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
   padding: 15px;
   display: flex;
   flex-direction: column;
   border-radius: 8px;
+  font-size: 16px;
+  background-color: $blue-bgc;
 }
 
-.title{
-  &-wrapper{
+.title {
+  &-wrapper {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
     justify-content: center;
-    & h1{
+
+    & h1 {
       font-family: 'Russo One', sans-serif;
       text-transform: uppercase;
       margin-bottom: 0;
     }
+  }
+}
+
+button {
+  padding: 8px 32px;
+  background-color: $blue-light;
+  color: white;
+  line-height: 20px;
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 8px;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $blue;
   }
 }
 </style>

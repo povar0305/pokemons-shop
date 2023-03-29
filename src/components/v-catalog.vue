@@ -52,5 +52,8 @@ export default {
     padding: 1rem;
     align-items: center;
     justify-content: center;
+    @media(max-width : 768px){
+        padding:0;
+    }
 }
 </style>
