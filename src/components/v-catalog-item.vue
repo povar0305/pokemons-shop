@@ -2,7 +2,9 @@
     <div class="v-catalog-item">
         <p>{{ pokemons_data.name }}</p>
 
-        <carousel class="v-catalog-item-carousel">
+        <carousel
+         :perPage='1' 
+         class="v-catalog-item-carousel">
             <slide v-for="src in pokemons_data.src" :key="pokemons_data.src[src]">
                 <img alt="" :src="src">
             </slide>
@@ -126,7 +128,10 @@ export default {
 .VueCarousel-pagination{
     height: 30px;
 }
-.VueCarousel-dot-container{
+.VueCarousel-dot-container,.VueCarousel-dot{
     margin-top: 0 !important;
+}
+.VueCarousel-dot--active{
+    background-color: $blue !important;
 }
 </style>
