@@ -9,6 +9,10 @@ const store = new vuex.Store({
         backendUrl: 'https://pokeapi.co/api/v2',
         pokemons: null,
         DEGUB: true,
+        cart: {
+            count:0,
+            pokemons:[]
+        },
     },
     mutations: {
         setPokemons(state, info) {
@@ -27,26 +31,33 @@ const store = new vuex.Store({
                 .then(resposne => {
                     pokemonObject.info = resposne.data.stats;
                     pokemonObject.src = [];
-                     for (let src in resposne.data.sprites) {
+                    for (let src in resposne.data.sprites) {
                         if (resposne.data.sprites[src] !== null && typeof resposne.data.sprites[src] == 'string') {
                             pokemonObject.src.push(resposne.data.sprites[src])
                         }
                     }
-                    console.log(pokemonObject.src)
                 });
         },
-        setPokemonSrc(state, pokemonObject) {
-            if (state.DEGUB) console.log('setPokemonSrc', pokemonObject)
-
-
+        setCart(state, pokemon) {
+            // if (state.DEBUG)
+            console.log('setCart', pokemon);
+            if (state.cart.pokemons.includes(pokemon)) {
+                state.cart.pokemons = state.cart.pokemons.filter((n) => { return n != pokemon });
+            } else {
+                state.cart.pokemons.push(pokemon);
+            }
+            console.log(state.cart.pokemons.length)
+            state.cart.count=state.cart.pokemons.length;
         }
-
     },
     actions: {},
     modules: {},
     getters: {
         getServerUrl: state => {
             return state.backendUrl
+        },
+        getCartCount: state => {
+            return state.cart.count
         },
         getPokemons: state => {
             return state.pokemons

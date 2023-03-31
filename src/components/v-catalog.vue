@@ -1,7 +1,7 @@
 <template >
     <div class="v-catalog">
         <vCatalogItem v-for="pokemon in this.$store.state.pokemons" :key="pokemon.id" :pokemons_data="pokemon"
-            @sendId="showChild" />
+             />
     </div>
 </template>
 <script>
@@ -22,9 +22,7 @@ export default {
     },
     computed: {},
     methods: {
-        showChild(data) {
-            console.log(data)
-        },
+        
         async loadListPokemons() {
             axios
                 .get(this.$store.state.backendUrl + '/pokemon/')

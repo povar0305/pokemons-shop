@@ -2,9 +2,7 @@
     <div class="v-catalog-item">
         <p>{{ pokemons_data.name }}</p>
 
-        <carousel
-         :perPage='1' 
-         class="v-catalog-item-carousel">
+        <carousel :perPage='1' class="v-catalog-item-carousel">
             <slide v-for="src in pokemons_data.src" :key="pokemons_data.src[src]">
                 <img alt="" :src="src">
             </slide>
@@ -39,7 +37,7 @@
                 </div>
             </div>
 
-            <button @click="sendDataToParent">Беру</button>
+            <button @click="sendToCart(pokemons_data)">Беру</button>
         </div>
     </div>
 </template>
@@ -68,8 +66,8 @@ export default {
     },
     computed: {},
     methods: {
-        sendDataToParent() {
-            this.$emit('sendId', this.pokemons_data);
+        sendToCart(pokemon) {
+            this.$store.commit('setCart', pokemon);
         }
     },
     watch: {},
@@ -125,13 +123,16 @@ export default {
         }
     }
 }
-.VueCarousel-pagination{
+
+.VueCarousel-pagination {
     height: 30px;
 }
-.VueCarousel-dot-container,.VueCarousel-dot{
+
+.VueCarousel-dot-container,
+.VueCarousel-dot {
     margin-top: 0 !important;
 }
-.VueCarousel-dot--active{
+
+.VueCarousel-dot--active {
     background-color: $blue !important;
-}
-</style>
+}</style>

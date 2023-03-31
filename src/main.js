@@ -4,8 +4,10 @@ import store from './store';
 import VueCarousel from 'vue-carousel';
 
 Vue.config.productionTip = false;
-Vue.config.devtools = true
+Vue.config.devtools = true;
+
 new Vue({
-  store, VueCarousel,
+  store,
+  VueCarousel,
   render: h => h(App),
 }).$mount('#app')
