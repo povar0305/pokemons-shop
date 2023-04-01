@@ -35,8 +35,11 @@
                     <Icon icon="tabler:shield-plus" />
                     {{ pokemons_data.info[4].base_stat }}
                 </div>
-            </div>{{  }}
-            <button @click="sendToCart(pokemons_data)" :class="{ selected: this.$store.state.cart.pokemons.includes(pokemons_data)}" >
+            </div>
+            <button 
+                @click="sendToCart(pokemons_data)"
+                class="btn"
+                :class="{ selected: this.$store.state.cart.pokemons.includes(pokemons_data)}" >
                 <span v-if="!this.$store.state.cart.pokemons.includes(pokemons_data)">Беру</span>
                 <span v-else>Удалить</span>
             </button>

@@ -6,3 +6,4 @@
  иконки https://iconify.design/ 
 
 карусель vue-carousel
+уведомления vue-toastification

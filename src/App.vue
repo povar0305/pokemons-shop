@@ -107,7 +107,7 @@ body {
   }
 }
 
-button {
+button.btn {
   padding: 8px 32px;
   background-color: $blue-light;
   color: white;

@@ -1,6 +1,9 @@
 <template >
     <div class="v-catalog">
-        <vCatalogItem v-for="pokemon in this.$store.state.pokemons" :key="pokemon.id" :pokemons_data="pokemon"
+        <vCatalogItem 
+        v-for="pokemon in this.$store.state.pokemons" 
+        :key="pokemon.id" 
+        :pokemons_data="pokemon"
              />
     </div>
 </template>

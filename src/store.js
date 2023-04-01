@@ -30,7 +30,7 @@ const store = new vuex.Store({
                 .get(state.backendUrl + '/pokemon/' + pokemonObject.name)
                 .then(resposne => {
                     pokemonObject.info = resposne.data.stats;
-                    pokemonObject.src = [];
+                    pokemonObject.src = [];                    
                     for (let src in resposne.data.sprites) {
                         if (resposne.data.sprites[src] !== null && typeof resposne.data.sprites[src] == 'string') {
                             pokemonObject.src.push(resposne.data.sprites[src])
