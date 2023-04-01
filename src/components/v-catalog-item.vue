@@ -35,9 +35,11 @@
                     <Icon icon="tabler:shield-plus" />
                     {{ pokemons_data.info[4].base_stat }}
                 </div>
-            </div>
-
-            <button @click="sendToCart(pokemons_data)">Беру</button>
+            </div>{{  }}
+            <button @click="sendToCart(pokemons_data)" :class="{ selected: this.$store.state.cart.pokemons.includes(pokemons_data)}" >
+                <span v-if="!this.$store.state.cart.pokemons.includes(pokemons_data)">Беру</span>
+                <span v-else>Удалить</span>
+            </button>
         </div>
     </div>
 </template>
@@ -67,12 +69,14 @@ export default {
     computed: {},
     methods: {
         sendToCart(pokemon) {
+            console.log(pokemon);
+            pokemon.inCart=!pokemon.inCart;
             this.$store.commit('setCart', pokemon);
         }
     },
     watch: {},
     mounted() {
-        console.log('v-catalog-item')
+        console.log('v-catalog-item');
     }
 }
 </script>
@@ -123,6 +127,15 @@ export default {
         }
     }
 }
+button.selected{
+    background-color: $yellow-light;
+    &:hover{
+        background-color: $yellow;
+    }
+    & span{
+        color: $blue;
+    }
+}
 
 .VueCarousel-pagination {
     height: 30px;
@@ -135,4 +148,5 @@ export default {
 
 .VueCarousel-dot--active {
     background-color: $blue !important;
-}</style>
+}
+</style>

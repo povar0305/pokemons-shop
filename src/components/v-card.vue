@@ -1,22 +1,19 @@
 <template >
     <div class="v-card">
-        <div class="v-card--inner">
-            <Icon icon='material-symbols:shopping-bag-outline'>
-            </Icon>
+        <button class="v-card--inner">
+            К бою готовы
             <span>
                 {{ this.$store.state.cart.count }}
             </span>
-        </div>
+        </button>
 
     </div>
 </template>
 <script>
-import { Icon } from '@iconify/vue2';
 
 export default {
     name: "v-card",
     components: {
-        Icon,
     },
     data() {
         return {
@@ -37,25 +34,19 @@ export default {
 </script>
 <style lang="scss" scoped>
 .v-card {
-    background-color: $yellow-light;
-    padding: 10px;
-    border-radius: 8px;
     position: fixed;
     top: 15px;
     right: 15px;
 
-    & svg {
-        height: 24px;
-        width: 24px;
-        color: white;
-    }
-
     &--inner {
-        position: relative;
-        & span {
-            top: 10px;
-            left: 10px;
-            position: absolute;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        & span{
+            margin-left: 5px;
+            font-weight: bold;
         }
     }
 

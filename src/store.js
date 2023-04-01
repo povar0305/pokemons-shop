@@ -36,6 +36,7 @@ const store = new vuex.Store({
                             pokemonObject.src.push(resposne.data.sprites[src])
                         }
                     }
+                    pokemonObject.inCart=false;
                 });
         },
         setCart(state, pokemon) {
@@ -46,7 +47,6 @@ const store = new vuex.Store({
             } else {
                 state.cart.pokemons.push(pokemon);
             }
-            console.log(state.cart.pokemons.length)
             state.cart.count=state.cart.pokemons.length;
         }
     },
