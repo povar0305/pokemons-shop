@@ -1,40 +1,40 @@
 <template>
     <div class="v-main-wrapper">
         <vCatalog></vCatalog>
-        <vCard></vCard>
+        <vCard @winner='showWinner'></vCard>
+        <vWinner v-if="Object.keys(winner).length != 0" :winner="winner"></vWinner>
     </div>
 </template>
 
 <script>
 import vCatalog from './v-catalog.vue';
 import vCard from './v-card.vue';
+import VWinner from './v-winner.vue';
 export default {
-    name:'vMainWrapper',
-    components:{
+    name: 'vMainWrapper',
+    components: {
         vCatalog,
-        vCard
-        //
+        vCard,
+        VWinner
     },
-    props:{
-        //
-    },
-    data(){
-        return{
-            title:'vMainWrapper'
+    data() {
+        return {
+            title: 'vMainWrapper',
+            winner: {},
         }
     },
-    computed:{},
-    methods:{},
-    watch:{},
-    mounted(){
-        console.log('v-main-wrapper')
+    methods: {
+        showWinner(winner) {
+            this.winner = winner;
+        }
+    },
+    mounted() {
+        console.log('v-main-wrapper');
     }
-
 }
 </script>
-
 <style lang="scss">
-.v-main-wrapper{
+.v-main-wrapper {
     display: flex;
     align-items: center;
     flex-direction: column;

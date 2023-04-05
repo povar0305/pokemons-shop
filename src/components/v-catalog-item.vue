@@ -4,12 +4,10 @@
 
         <carousel :perPage='1' class="v-catalog-item-carousel">
             <slide v-for="src in pokemons_data.src" :key="pokemons_data.src[src]">
-                <img alt="" :src="src">
+                <img alt=""  :src="src">
             </slide>
         </carousel>
-
         <div class="v-catalog-item_info">
-
             <div class="row m-0 p-0">
                 <div class="v-catalog-item_info--states">
                     <Icon icon="icon-park-twotone:speed-one" />
@@ -36,17 +34,16 @@
                     {{ pokemons_data.info[4].base_stat }}
                 </div>
             </div>
-            <button 
-                @click="sendToCart(pokemons_data)"
-                class="btn"
-                :class="{ selected: this.$store.state.cart.pokemons.includes(pokemons_data)}" >
+            <button @click="sendToCart(pokemons_data)" class="btn"
+                :class="{ selected: this.$store.state.cart.pokemons.includes(pokemons_data) }">
                 <span v-if="!this.$store.state.cart.pokemons.includes(pokemons_data)">Беру</span>
-                <span v-else>Удалить</span>
+                <span v-else>Удалить </span>
             </button>
         </div>
     </div>
 </template>
 <script>
+
 import { Icon } from '@iconify/vue2';
 import { Carousel, Slide } from 'vue-carousel'
 export default {
@@ -68,23 +65,18 @@ export default {
         return {
             title: 'v-catalog-item'
         }
-    },
-    computed: {},
+    }, 
     methods: {
         sendToCart(pokemon) {
-            console.log(pokemon);
-            pokemon.inCart=!pokemon.inCart;
+            pokemon.inCart = !pokemon.inCart;
             this.$store.commit('setCart', pokemon);
         }
-    },
-    watch: {},
-    mounted() {
-        console.log('v-catalog-item');
     }
 }
+
 </script>
 <style lang="scss">
-.v-catalog-item {
+.v-catalog-item { 
     display: flex;
     flex-direction: column;
     width: 15%;
@@ -102,7 +94,6 @@ export default {
         margin: 0.5rem;
         padding: 0.5rem;
     }
-
     & svg {
         height: 24px;
         width: 24px;
@@ -130,13 +121,16 @@ export default {
         }
     }
 }
-button.selected{
-    background-color: $yellow-light;
-    &:hover{
-        background-color: $yellow;
+
+button.selected {
+    background-color: $yellow-light !important;
+
+    &:hover {
+        background-color: $yellow !important;
     }
-    & span{
-        color: $blue;
+
+    & span {
+        color: $blue !important;
     }
 }
 

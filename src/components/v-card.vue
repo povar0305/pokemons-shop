@@ -10,57 +10,63 @@
             <div class="v-card-show-more--close " @click="showCart = !showCart">
                 <Icon icon="clarity:close-line"></Icon>
             </div>
-            <div class="v-card-show-more--main" v-for="pokemon in this.$store.state.cart.pokemons" :key="pokemon.id">
-                <div class="v-card-show-more--main_row">
-                    <img :src="pokemon.src[0]" alt="">
-                    <div class="v-card-show-more--main_row-wrapper">
-                        <p>{{ pokemon.name }}</p>
-                        <div class="v-card-show-more--main_row-wrapper-list">
-                            <div class="v-card-show-more--main_row--inner">
-                                <Icon icon="icon-park-twotone:speed-one"></Icon>
-                                {{ pokemon.info[5].base_stat }}
-                            </div>
-                            <div class="v-card-show-more--main_row--inner">
-                                <Icon icon="mdi:heart-outline" />
-                                {{ pokemon.info[0].base_stat }}
-                            </div>
-                            <div class="v-card-show-more--main_row--inner">
-                                <Icon icon="akar-icons:sword" />
-                                {{ pokemon.info[1].base_stat }}
-                            </div>
-                            <div class="v-card-show-more--main_row--inner">
-                                <Icon icon="akar-icons:double-sword" />
-                                {{ pokemon.info[3].base_stat }}
-                            </div>
-                            <div class="v-card-show-more--main_row--inner">
-                                <Icon icon="tabler:shield" />
-                                {{ pokemon.info[2].base_stat }}
-                            </div>
-                            <div class="v-card-show-more--main_row--inner">
-                                <Icon icon="tabler:shield-plus" />
-                                {{ pokemon.info[4].base_stat }}
-                            </div>
-                        </div>
+            <div class="v-card-show-more-scroll">
+                <div class="v-card-show-more--main" v-for="pokemon in this.$store.state.cart.pokemons" :key="pokemon.id">
+                    <div class="v-card-show-more--main_row">
+                        <button class="v-card-show-more--main_row--close" @click='deletePokemon(pokemon)'>
+                            <Icon icon="clarity:close-line" class=""></Icon>
+                        </button>
 
+                        <img :src="pokemon.src[0]" alt="">
+                        <div class="v-card-show-more--main_row-wrapper">
+                            <p>{{ pokemon.name }}</p>
+                            <div class="v-card-show-more--main_row-wrapper-list">
+                                <div class="v-card-show-more--main_row--inner">
+                                    <Icon icon="icon-park-twotone:speed-one"></Icon>
+                                    {{ pokemon.info[5].base_stat }}
+                                </div>
+                                <div class="v-card-show-more--main_row--inner">
+                                    <Icon icon="mdi:heart-outline" />
+                                    {{ pokemon.info[0].base_stat }}
+                                </div>
+                                <div class="v-card-show-more--main_row--inner">
+                                    <Icon icon="akar-icons:sword" />
+                                    {{ pokemon.info[1].base_stat }}
+                                </div>
+                                <div class="v-card-show-more--main_row--inner">
+                                    <Icon icon="akar-icons:double-sword" />
+                                    {{ pokemon.info[3].base_stat }}
+                                </div>
+                                <div class="v-card-show-more--main_row--inner">
+                                    <Icon icon="tabler:shield" />
+                                    {{ pokemon.info[2].base_stat }}
+                                </div>
+                                <div class="v-card-show-more--main_row--inner">
+                                    <Icon icon="tabler:shield-plus" />
+                                    {{ pokemon.info[4].base_stat }}
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
+
 
                 </div>
             </div>
             <div class="v-card-show-more-fighting">
-                <button @click="selectWinner()" class="btn">
-                    В бой
-                </button>
+                <vButtonSelectWinner text="В бой"/>
             </div>
         </div>
-
     </div>
 </template>
 <script>
 import { Icon } from '@iconify/vue2';
+import vButtonSelectWinner from './v-button-select-winner.vue';
 export default {
     name: "v-card",
     components: {
-        Icon
+        Icon,
+        vButtonSelectWinner
     },
     data() {
         return {
@@ -68,13 +74,13 @@ export default {
             showCart: false,
         }
     },
-    computed: {},
     methods: {
         clickByCart() {
-            if (this.$store.state.cart.count > 0) {
-                this.showCart = !this.showCart
+            if (this.$store.state.cart.count > 1) {
+                this.showCart = !this.showCart;
             } else {
-                this.$toast.error("Выберите покемона", {
+                this.$toast.clear();
+                this.$toast.error("В бою должны учавствовать минимум 2 покемона", {
                     position: "top-left",
                     timeout: false,
                     closeOnClick: true,
@@ -89,19 +95,30 @@ export default {
                     rtl: false
                 });
             }
-        }, selectWinner() {
-            let indexRand = Math.floor(Math.random() * (this.$store.state.cart.count - 1));
-            //TODO вывести победителя
-            console.log(this.$store.state.cart.pokemons[indexRand])
+        },
+        deletePokemon(pokemon) {
+            this.$store.commit('deletePokemon', pokemon);
+            if (this.$store.state.cart.count < 2) {
+                this.$toast.clear();
+                this.$toast.error("В бою должны учавствовать минимум 2 покемона", {
+                    position: "top-left",
+                    timeout: false,
+                    closeOnClick: true,
+                    pauseOnFocusLoss: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    draggablePercent: 0.6,
+                    showCloseButtonOnHover: false,
+                    hideProgressBar: true,
+                    closeButton: "button",
+                    icon: true,
+                    rtl: false
+                });
+            }
         }
     },
-    watch: {},
     mounted() {
         console.log('v-card');
-
-    },
-    created() {
-        //
     }
 }
 </script>
@@ -143,11 +160,30 @@ export default {
             }
         }
 
+        &-scroll {
+            max-height: 450px;
+            overflow: auto;
+        }
+
         &--main {
             &_row {
                 display: flex;
                 align-items: center;
                 flex-wrap: wrap;
+                position: relative;
+
+                &--close {
+                    position: absolute;
+                    right: 5px;
+                    top: 5px;
+                    opacity: 0.8;
+
+                    &:hover {
+                        opacity: 1;
+                        color: $blue;
+                        cursor: pointer;
+                    }
+                }
 
                 & img {
                     max-width: 70px;

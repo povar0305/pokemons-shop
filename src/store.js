@@ -6,12 +6,12 @@ Vue.use(vuex);
 
 const store = new vuex.Store({
     state: {
-        backendUrl: 'https://pokeapi.co/api/v2',
-        pokemons: null,
-        DEGUB: true,
-        cart: {
-            count:0,
-            pokemons:[]
+        backendUrl: 'https://pokeapi.co/api/v2',//базовый путь до апихи
+        pokemons: null, //объект с покемонами
+        DEGUB: true, //переменная для дебага
+        cart: { //корзина
+            count: 0, //количество
+            pokemons: [] //покемоны, которые в корзине
         },
     },
     mutations: {
@@ -24,30 +24,34 @@ const store = new vuex.Store({
                 this.commit('setPokemonInfo', pokemon);
             }
         },
+        deletePokemon(state, pokemon) {
+            console.log('delete');
+            state.cart.pokemons = state.cart.pokemons.filter(function (f) { return f !== pokemon });
+
+        },
         setPokemonInfo(state, pokemonObject) {
-            if (state.DEGUB) console.log('setPokemonInfo', pokemonObject)
+            if (state.DEGUB) console.log('setPokemonInfo', pokemonObject);
             axios
                 .get(state.backendUrl + '/pokemon/' + pokemonObject.name)
                 .then(resposne => {
                     pokemonObject.info = resposne.data.stats;
-                    pokemonObject.src = [];                    
+                    pokemonObject.src = [];
                     for (let src in resposne.data.sprites) {
                         if (resposne.data.sprites[src] !== null && typeof resposne.data.sprites[src] == 'string') {
                             pokemonObject.src.push(resposne.data.sprites[src])
                         }
                     }
-                    pokemonObject.inCart=false;
+                    pokemonObject.inCart = false;
                 });
         },
         setCart(state, pokemon) {
-            // if (state.DEBUG)
-            console.log('setCart', pokemon);
+            if (state.DEGUB) console.log('setCart', pokemon);
             if (state.cart.pokemons.includes(pokemon)) {
                 state.cart.pokemons = state.cart.pokemons.filter((n) => { return n != pokemon });
             } else {
                 state.cart.pokemons.push(pokemon);
             }
-            state.cart.count=state.cart.pokemons.length;
+            state.cart.count = state.cart.pokemons.length;
         }
     },
     actions: {},

@@ -20,16 +20,49 @@ export default {
   components: {
     vMainWrapper,
     //
-  }
+  },
+
 }
 </script>
 
 <style lang="scss">
+//TODO стили к скроллу
 * {
   font-family: Montserrat, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: 0.3s;
+}
+
+
+*::-webkit-scrollbar {
+  background-color: $blue-bgc;
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #babac0;
+  border-radius: 16px;
+  border: 5px solid transparent;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #a0a0a5;
+  cursor: pointer;
+  border: 4px solid transparent;
+}
+
+*::-webkit-scrollbar-button {
+  display: none
+}
+
+
+.overflow {
+  min-height: 100vh
 }
 
 body {
