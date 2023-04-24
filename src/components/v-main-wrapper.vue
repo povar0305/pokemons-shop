@@ -19,7 +19,6 @@ export default {
     },
     data() {
         return {
-            title: 'vMainWrapper',
             winner: {},
         }
     },
@@ -27,9 +26,6 @@ export default {
         showWinner(winner) {
             this.winner = winner;
         }
-    },
-    mounted() {
-        console.log('v-main-wrapper');
     }
 }
 </script>

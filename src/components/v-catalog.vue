@@ -1,10 +1,6 @@
 <template >
     <div class="v-catalog">
-        <vCatalogItem 
-        v-for="pokemon in this.$store.state.pokemons" 
-        :key="pokemon.id" 
-        :pokemons_data="pokemon"
-             />
+        <vCatalogItem v-for="pokemon in this.$store.state.pokemons" :key="pokemon.id" :pokemons_data="pokemon" />
     </div>
 </template>
 <script>
@@ -20,12 +16,11 @@ export default {
     },
     data() {
         return {
-            title: 'v-catalog',
+            //
         }
     },
     computed: {},
     methods: {
-        
         async loadListPokemons() {
             axios
                 .get(this.$store.state.backendUrl + '/pokemon/')
@@ -37,13 +32,9 @@ export default {
         }
     },
     watch: {},
-    mounted() {
-        console.log('v-catalog');
-    },
     created() {
         this.loadListPokemons()
     }
-
 }
 </script>
 <style lang="scss">
@@ -53,8 +44,9 @@ export default {
     padding: 1rem;
     align-items: center;
     justify-content: center;
-    @media(max-width : 768px){
-        padding:0;
+
+    @media(max-width : 768px) {
+        padding: 0;
     }
 }
 </style>

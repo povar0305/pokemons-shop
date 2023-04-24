@@ -3,7 +3,7 @@
         <p>{{ pokemons_data.name }}</p>
         <carousel :perPage='1' class="v-catalog-item-carousel">
             <slide v-for="src in pokemons_data.src" :key="pokemons_data.src[src]">
-                <img alt=""  :src="src">
+                <img alt="" :src="src">
             </slide>
 
         </carousel>
@@ -59,25 +59,24 @@ export default {
             default() {
                 return {};
             }
-            
         }
     },
     data() {
         return {
-            title: 'v-catalog-item'
+            //
         }
-    }, 
+    },
     methods: {
         sendToCart(pokemon) {
             pokemon.inCart = !pokemon.inCart;
             this.$store.commit('setCart', pokemon);
         }
     }
-    
+
 }
 </script>
 <style lang="scss">
-.v-catalog-item { 
+.v-catalog-item {
     display: flex;
     flex-direction: column;
     width: 15%;
@@ -95,6 +94,7 @@ export default {
         margin: 0.5rem;
         padding: 0.5rem;
     }
+
     & svg {
         height: 24px;
         width: 24px;

@@ -70,7 +70,6 @@ export default {
     },
     data() {
         return {
-            title: 'v-card',
             showCart: false,
             count:this.$store.state.cart.pokemons.lenght,
         }
@@ -117,9 +116,6 @@ export default {
                 });
             }
         }
-    },
-    mounted() {
-        console.log('v-card');
     }
 }
 </script>
