@@ -2,39 +2,38 @@
     <div class="v-winner">
         <div class="v-winner--inner">
             <div class="v-winner--inner-name">
-                Победил <span> {{ winner.name }}</span>
+                Победил <span> {{ this.$store.state.winner.name }}</span>
             </div>
             <div class="v-winner--inner-pokemon">
-                <img :src="winner.src[0]" alt="">
+                <img :src="this.$store.state.winner.src[0]" alt="">
                 <div class="v-winner--inner-pokemon-stats">
                     <div class="v-catalog-item_info--states">
                         <Icon icon="icon-park-twotone:speed-one" />
-                        {{ winner.info[5].base_stat }}
+                        {{ this.$store.state.winner.info[5].base_stat }}
                     </div>
                     <div class="v-catalog-item_info--states">
                         <Icon icon="mdi:heart-outline" />
-                        {{ winner.info[0].base_stat }}
+                        {{ this.$store.state.winner.info[0].base_stat }}
                     </div>
                     <div class="v-catalog-item_info--states">
                         <Icon icon="akar-icons:sword" />
-                        {{ winner.info[1].base_stat }}
+                        {{ this.$store.state.winner.info[1].base_stat }}
                     </div>
                     <div class="v-catalog-item_info--states">
                         <Icon icon="akar-icons:double-sword" />
-                        {{ winner.info[3].base_stat }}
+                        {{ this.$store.state.winner.info[3].base_stat }}
                     </div>
                     <div class="v-catalog-item_info--states">
                         <Icon icon="tabler:shield" />
-                        {{ winner.info[2].base_stat }}
+                        {{ this.$store.state.winner.info[2].base_stat }}
                     </div>
                     <div class="v-catalog-item_info--states">
                         <Icon icon="tabler:shield-plus" />
-                        {{ winner.info[4].base_stat }}
+                        {{ this.$store.state.winner.info[4].base_stat }}
                     </div>
                 </div>
             </div>
         </div>
-        <Icon icon="tabler:shield-plus" />
         <vButtonSelectWinner text="Еще раз" />
 
     </div>
@@ -46,15 +45,7 @@ import vButtonSelectWinner from './v-button-select-winner.vue';
 export default {
     name: 'v-winner',
     components: {
-        Icon,vButtonSelectWinner
-    },
-    props: {
-        winner: {
-            type: Object,
-            default() {
-                return {};
-            }
-        }
+        Icon, vButtonSelectWinner
     },
     data() {
         return {
@@ -85,6 +76,19 @@ export default {
         display: flex;
         flex-direction: column;
 
+        &-pokemon {
+            &-stats {
+                display: flex;
+
+                & svg {
+                    width: 24px;
+                    height: 24px;
+                    color: $blue;
+                    margin-right: 5px;
+                }
+            }
+        }
+
         &-name {
             & span {
                 font-weight: bold;
@@ -93,5 +97,4 @@ export default {
         }
 
     }
-}
-</style>
+}</style>

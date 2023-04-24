@@ -1,20 +1,20 @@
 <template >
     <div class="v-card">
-        <button class="v-card--inner btn" v-if="!this.showCart" @click="clickByCart()">
+        <button class="v-card--inner btn" v-if="!this.$store.state.showCart" @click="clickByCart()">
             К бою готовы
             <span>
                 {{ this.$store.state.cart.count }}
             </span>
         </button>
-        <div class="v-card-show-more" v-if="this.showCart">
-            <div class="v-card-show-more--close " @click="showCart = !showCart">
+        <div class="v-card-show-more" v-if="this.$store.state.showCart">
+            <div class="v-card-show-more--close " @click="this.$store.state.showCart = !this.$store.state.showCart">
                 <Icon icon="clarity:close-line"></Icon>
             </div>
             <div class="v-card-show-more-scroll">
                 <div class="v-card-show-more--main" v-for="pokemon in this.$store.state.cart.pokemons" :key="pokemon.id">
                     <div class="v-card-show-more--main_row">
                         <button class="v-card-show-more--main_row--close" @click='deletePokemon(pokemon)'>
-                            <Icon icon="clarity:close-line" class=""></Icon>
+                            <Icon icon="clarity:close-line" ></Icon>
                         </button>
 
                         <img :src="pokemon.src[0]" alt="">
@@ -72,12 +72,13 @@ export default {
         return {
             title: 'v-card',
             showCart: false,
+            count:this.$store.state.cart.pokemons.lenght,
         }
     },
     methods: {
         clickByCart() {
             if (this.$store.state.cart.count > 1) {
-                this.showCart = !this.showCart;
+                this.$store.state.showCart=!this.$store.state.showCart;
             } else {
                 this.$toast.clear();
                 this.$toast.error("В бою должны учавствовать минимум 2 покемона", {
@@ -177,7 +178,13 @@ export default {
                     right: 5px;
                     top: 5px;
                     opacity: 0.8;
-
+                    background-color: transparent;
+                    border: none;
+                    justify-content: center;
+                    display: flex;
+                    & svg{
+                        margin-right: 0;
+                    }
                     &:hover {
                         opacity: 1;
                         color: $blue;

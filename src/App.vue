@@ -26,7 +26,6 @@ export default {
 </script>
 
 <style lang="scss">
-//TODO стили к скроллу
 * {
   font-family: Montserrat, sans-serif;
   -webkit-font-smoothing: antialiased;

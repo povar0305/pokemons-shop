@@ -2,7 +2,7 @@
     <div class="v-main-wrapper">
         <vCatalog></vCatalog>
         <vCard @winner='showWinner'></vCard>
-        <vWinner v-if="Object.keys(winner).length != 0" :winner="winner"></vWinner>
+        <vWinner v-if="this.$store.state.winner!=null" ></vWinner>
     </div>
 </template>
 

@@ -19,8 +19,8 @@ export default {
             console.log(1);
             let indexRand = Math.floor(Math.random() * (this.$store.state.cart.count - 1));
             let winner = this.$store.state.cart.pokemons[indexRand];
-            this.$emit('winner', winner);
-            this.showCart = !this.showCart;
+            this.$store.state.winner=winner;
+            this.$store.state.showCart=false;
         }
     }
 }

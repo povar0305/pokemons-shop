@@ -10,9 +10,11 @@ const store = new vuex.Store({
         pokemons: null, //объект с покемонами
         DEGUB: true, //переменная для дебага
         cart: { //корзина
-            count: 0, //количество
-            pokemons: [] //покемоны, которые в корзине
+            pokemons: [], //покемоны, которые в корзине
+            count:0,
         },
+        winner:{},// победитель в бою
+        showCart:false
     },
     mutations: {
         setPokemons(state, info) {

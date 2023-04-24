@@ -1,11 +1,11 @@
 <template>
     <div class="v-catalog-item">
         <p>{{ pokemons_data.name }}</p>
-
         <carousel :perPage='1' class="v-catalog-item-carousel">
             <slide v-for="src in pokemons_data.src" :key="pokemons_data.src[src]">
                 <img alt=""  :src="src">
             </slide>
+
         </carousel>
         <div class="v-catalog-item_info">
             <div class="row m-0 p-0">
@@ -17,6 +17,7 @@
                     <Icon icon="mdi:heart-outline" />
                     {{ pokemons_data.info[0].base_stat }}
                 </div>
+
                 <div class="v-catalog-item_info--states">
                     <Icon icon="akar-icons:sword" />
                     {{ pokemons_data.info[1].base_stat }}
@@ -43,7 +44,6 @@
     </div>
 </template>
 <script>
-
 import { Icon } from '@iconify/vue2';
 import { Carousel, Slide } from 'vue-carousel'
 export default {
@@ -72,8 +72,8 @@ export default {
             this.$store.commit('setCart', pokemon);
         }
     }
+    
 }
-
 </script>
 <style lang="scss">
 .v-catalog-item { 
