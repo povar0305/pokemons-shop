@@ -1,9 +1,20 @@
 # pokemons-shop
- Зависимости: vue cli, node sass,scss-loader, axios, vuex, bootstrap, iconify/vue2, vue-carousel
+ Зависимости: 
+ * vue cli
+ * node sass
+ * scss-loader
+ * axios
+ * vuex
+ * bootstrap - стили, сетка
+ * iconify/vue2 - иконки
+ * vue-carousel - карусель картинок у покемонов
+ * vue-toastification - уведомления
 
- api https://pokeapi.co/
+ ## Api https://pokeapi.co/
 
- иконки https://iconify.design/ 
+ ## Скриншоты
 
-карусель vue-carousel
-уведомления vue-toastification
+### Мобилка
+### Планшет
+### Десктоп
+

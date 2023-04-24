@@ -72,7 +72,6 @@ export default {
             this.$store.commit('setCart', pokemon);
         }
     }
-
 }
 </script>
 <style lang="scss">
