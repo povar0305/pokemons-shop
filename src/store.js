@@ -11,10 +11,10 @@ const store = new vuex.Store({
         DEGUB: true, //переменная для дебага
         cart: { //корзина
             pokemons: [], //покемоны, которые в корзине
-            count:0,
+            count: 0, //кол-во покемонов в корзине
         },
-        winner:{},// победитель в бою
-        showCart:false
+        winner: {},// победитель в бою
+        showCart: false // статус показа корзиныы
     },
     mutations: {
         setPokemons(state, info) {
@@ -27,9 +27,8 @@ const store = new vuex.Store({
             }
         },
         deletePokemon(state, pokemon) {
-            console.log('delete');
+            console.log('delete', pokemon);
             state.cart.pokemons = state.cart.pokemons.filter(function (f) { return f !== pokemon });
-
         },
         setPokemonInfo(state, pokemonObject) {
             if (state.DEGUB) console.log('setPokemonInfo', pokemonObject);
@@ -54,6 +53,12 @@ const store = new vuex.Store({
                 state.cart.pokemons.push(pokemon);
             }
             state.cart.count = state.cart.pokemons.length;
+        },
+        clearCart(state) {
+            if (state.DEGUB) console.log('clearCart', state);
+            state.cart.count = 0;
+            state.cart.pokemons = [];
+
         }
     },
     actions: {},

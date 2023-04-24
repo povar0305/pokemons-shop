@@ -4,6 +4,9 @@
             <div class="v-winner--inner-name">
                 Победил <span> {{ this.$store.state.winner.name }}</span>
             </div>
+            <div class="v-winner--inner__close" @click="closeWinner()">
+                <Icon icon="clarity:close-line" ></Icon>
+            </div>
             <div class="v-winner--inner-pokemon">
                 <img :src="this.$store.state.winner.src[0]" alt="">
                 <div class="v-winner--inner-pokemon-stats">
@@ -35,7 +38,6 @@
             </div>
         </div>
         <vButtonSelectWinner text="Еще раз" />
-
     </div>
 </template>
 <script>
@@ -54,11 +56,13 @@ export default {
     },
     computed: {},
     methods: {
-
+        closeWinner(){
+            this.$store.state.winner=null;
+            this.$store.commit('clearCart');
+        }
     },
     watch: {},
     mounted() {
-        console.log(this.winner)
     }
 }
 </script>
@@ -75,6 +79,24 @@ export default {
     &--inner {
         display: flex;
         flex-direction: column;
+        position: relative;
+
+        &__close {
+            position: absolute;
+            right: 0;
+            top: 0;
+
+            &:hover {
+                color: $blue;
+                cursor: pointer;
+            }
+
+            & svg {
+                color: $blue-light;
+                width: 24px;
+                height: 24px;
+            }
+        }
 
         &-pokemon {
             &-stats {
@@ -97,4 +119,5 @@ export default {
         }
 
     }
-}</style>
+}
+</style>
