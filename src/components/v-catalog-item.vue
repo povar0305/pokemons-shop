@@ -96,6 +96,9 @@ export default {
         padding: 0.5rem;
     }
 
+    @media(max-width:425px) {
+        width: 100%;
+    }
     & svg {
         height: 24px;
         width: 24px;
@@ -119,6 +122,9 @@ export default {
 
             @media (max-width: 768px) {
                 width: 50%;
+            }
+            @media (max-width: 425px) {
+                width: 33%;
             }
         }
     }

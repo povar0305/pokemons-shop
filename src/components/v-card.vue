@@ -138,6 +138,13 @@ export default {
         top: auto;
     }
 
+    @media(max-width:425px) {
+        bottom: 15px;
+        right: 15px;
+        left: 15px;
+        width: calc(100% - 30px);
+    }
+
     & button {
         width: auto;
     }
@@ -179,6 +186,12 @@ export default {
         backdrop-filter: blur(10px);
         border-radius: 8px;
 
+        @media(max-width:425px) {
+            flex-direction: column;
+            justify-content: space-between;
+            display: flex;
+        }
+
         &-fighting {
             & button {
                 width: 100%;
@@ -188,6 +201,11 @@ export default {
         &-scroll {
             max-height: 450px;
             overflow: auto;
+
+            @media(max-width:425px) {
+                max-height: auto;
+                height: 100%;
+            }
         }
 
         &--main {
@@ -239,6 +257,8 @@ export default {
                         flex-direction: row;
                         flex-wrap: wrap;
                         width: 100%;
+
+
                     }
                 }
 
@@ -253,6 +273,10 @@ export default {
                     display: flex;
                     align-items: center;
                     width: calc(100% / 6);
+
+                    @media(max-width:425px) {
+                        width: 30%;
+                    }
                 }
             }
         }
@@ -271,4 +295,5 @@ export default {
             }
         }
     }
-}</style>
+}
+</style>

@@ -5,7 +5,7 @@
                 Победил <span> {{ this.$store.state.winner.name }}</span>
             </div>
             <div class="v-winner--inner__close" @click="closeWinner()">
-                <Icon icon="clarity:close-line" ></Icon>
+                <Icon icon="clarity:close-line"></Icon>
             </div>
             <div class="v-winner--inner-pokemon">
                 <img :src="this.$store.state.winner.src[0]" alt="">
@@ -56,8 +56,8 @@ export default {
     },
     computed: {},
     methods: {
-        closeWinner(){
-            this.$store.state.winner=null;
+        closeWinner() {
+            this.$store.state.winner = null;
             this.$store.commit('clearCart');
         }
     },
@@ -66,7 +66,7 @@ export default {
     }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .v-winner {
     position: fixed;
     padding: 10px;
@@ -75,6 +75,10 @@ export default {
     border-radius: 8px;
     z-index: 1000;
     min-width: 425px;
+
+    @media(max-width:425px) {
+        min-width: auto;
+    }
 
     &--inner {
         display: flex;
@@ -102,6 +106,11 @@ export default {
             &-stats {
                 display: flex;
 
+                @media(max-width:425px) {
+                    justify-content: center;
+                    flex-wrap: wrap;
+                }
+
                 & svg {
                     width: 24px;
                     height: 24px;
@@ -120,4 +129,11 @@ export default {
 
     }
 }
+
+.v-catalog-item_info--states {
+    @media(max-width:425px) {
+        width: 30%;
+    }
+}
+
 </style>
