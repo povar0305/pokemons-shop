@@ -25,20 +25,36 @@
 
 ### Мобилка
 Шаг 1. Основной экран.
+![image](https://user-images.githubusercontent.com/73982948/234570254-303eb3c6-9fc6-4bee-83e9-05ee068600ea.png)
+
 
 Шаг 1.1. Возможность листать фотографии покемонов.
+![image](https://user-images.githubusercontent.com/73982948/234570365-1e8f2536-cabb-49d6-99fa-8d3332dc8e10.png)
+
 
 Шаг 2. Добавление покемонов в корзину для боя.
+![image](https://user-images.githubusercontent.com/73982948/234570453-80c3b894-22f5-4a98-9df8-7fdc5057a28e.png)
+
 
 Шаг 3. Открытая корзина со списком покемонов.
+![image](https://user-images.githubusercontent.com/73982948/234570546-a7e35649-60d4-4296-be03-58a406c8840e.png)
+
 
 Шаг 3.1. Возможность удалить уже выбранного покемона из корзины. (Удалили charmeleon)
+![image](https://user-images.githubusercontent.com/73982948/234570620-4038e0ce-c813-47a5-bd13-f21ec64329b8.png)
+
 
 Шаг 4. Выбор победителя.
+![image](https://user-images.githubusercontent.com/73982948/234570674-8e59083b-73e6-40aa-be0e-5e8b0ad63d54.png)
+
 
 Шаг 4.1 Уведомление, если меньше 2х покемонов в корзине.
+![image](https://user-images.githubusercontent.com/73982948/234570739-ce9252f0-c243-4340-975c-7ba5f6efbe53.png)
+
 
 Шаг 4.2. Возможность выбрать победителя заново.
+![image](https://user-images.githubusercontent.com/73982948/234570819-660dc298-3b15-4867-b000-40a4617396a7.png)
+
 
 
 
