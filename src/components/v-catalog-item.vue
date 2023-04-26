@@ -18,6 +18,7 @@
                     {{ pokemons_data.info[0].base_stat }}
                 </div>
 
+
                 <div class="v-catalog-item_info--states">
                     <Icon icon="akar-icons:sword" />
                     {{ pokemons_data.info[1].base_stat }}
@@ -73,6 +74,7 @@ export default {
         }
     }
 }
+
 </script>
 <style lang="scss">
 .v-catalog-item {

@@ -1,10 +1,14 @@
 <template >
     <div class="v-card">
         <button class="v-card--inner btn" v-if="!this.$store.state.showCart" @click="clickByCart()">
-            К бою готовы
+            <p>
+                К бою готовы
+            </p>
+            <Icon icon="akar-icons:double-sword" />
             <span>
                 {{ this.$store.state.cart.count }}
             </span>
+
         </button>
         <div class="v-card-show-more" v-if="this.$store.state.showCart">
             <div class="v-card-show-more--close " @click="this.$store.state.showCart = !this.$store.state.showCart">
@@ -14,7 +18,7 @@
                 <div class="v-card-show-more--main" v-for="pokemon in this.$store.state.cart.pokemons" :key="pokemon.id">
                     <div class="v-card-show-more--main_row">
                         <button class="v-card-show-more--main_row--close" @click='deletePokemon(pokemon)'>
-                            <Icon icon="clarity:close-line" ></Icon>
+                            <Icon icon="clarity:close-line"></Icon>
                         </button>
 
                         <img :src="pokemon.src[0]" alt="">
@@ -54,7 +58,7 @@
                 </div>
             </div>
             <div class="v-card-show-more-fighting">
-                <vButtonSelectWinner text="В бой"/>
+                <vButtonSelectWinner text="В бой" />
             </div>
         </div>
     </div>
@@ -71,13 +75,13 @@ export default {
     data() {
         return {
             showCart: false,
-            count:this.$store.state.cart.pokemons.lenght,
+            count: this.$store.state.cart.pokemons.lenght,
         }
     },
     methods: {
         clickByCart() {
             if (this.$store.state.cart.count > 1) {
-                this.$store.state.showCart=!this.$store.state.showCart;
+                this.$store.state.showCart = !this.$store.state.showCart;
             } else {
                 this.$toast.clear();
                 this.$toast.error("В бою должны учавствовать минимум 2 покемона", {
@@ -128,6 +132,12 @@ export default {
     justify-content: end;
     display: flex;
 
+    @media(max-width:425px) {
+        bottom: 35px;
+        right: 35px;
+        top: auto;
+    }
+
     & button {
         width: auto;
     }
@@ -137,6 +147,24 @@ export default {
         align-items: center;
         justify-content: center;
         color: white;
+
+        & p {
+            margin: 0;
+
+            @media(max-width:768px) {
+                display: none;
+            }
+        }
+
+        & svg {
+            display: none;
+            width: 24px;
+            height: 24px;
+
+            @media(max-width:768px) {
+                display: flex;
+            }
+        }
 
         & span {
             margin-left: 5px;
@@ -178,9 +206,11 @@ export default {
                     border: none;
                     justify-content: center;
                     display: flex;
-                    & svg{
+
+                    & svg {
                         margin-right: 0;
                     }
+
                     &:hover {
                         opacity: 1;
                         color: $blue;
@@ -241,5 +271,4 @@ export default {
             }
         }
     }
-}
-</style>
+}</style>
